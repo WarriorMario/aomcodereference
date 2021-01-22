@@ -7,7 +7,7 @@ This project uses a combination of the Java programming language and the JavaDoc
 
 Where can I find the reference?
 -------------------------------
-Right here: https://mythicfreak.github.io/aomcodereference/
+Right here: https://warriormario.github.io/aomcodereference/
 
 How does this work?
 -------------------
