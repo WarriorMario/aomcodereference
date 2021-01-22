@@ -269,7 +269,7 @@ public class UIConfig {
 	 * 
 	 * Format: "x1 y1 x2 y2"
 	 * 
-	 * @note Real name: <tt>RoughenSettings-pos</tt>
+	 * @note Real name: RoughenSettings-pos
 	 */
 	public string roughenSettings_Pos;
 	

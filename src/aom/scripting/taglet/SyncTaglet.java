@@ -1,10 +1,18 @@
 package aom.scripting.taglet;
 
+import java.util.EnumSet;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
+
+import javax.lang.model.element.Element;
+
+import com.sun.source.doctree.DocTree;
+
 import aom.scripting.datatypes.*;
-//requires tools.jar from JDK in build path
-import com.sun.javadoc.Tag;
-import com.sun.tools.doclets.Taglet;
+import jdk.javadoc.doclet.Taglet;
+import jdk.javadoc.doclet.Taglet.Location;
+
 
 /**
  * <p>
@@ -35,52 +43,8 @@ public class SyncTaglet implements Taglet { //TODO tag functions with @sync (con
 	}
 
 	@Override
-	public boolean inConstructor() {
-		return false;
-	}
-
-	@Override
-	public boolean inField() {
-		return false;
-	}
-
-	@Override
-	public boolean inMethod() {
-		return true;
-	}
-
-	@Override
-	public boolean inOverview() {
-		return false;
-	}
-
-	@Override
-	public boolean inPackage() {
-		return false;
-	}
-
-	@Override
-	public boolean inType() {
-		return true;
-	}
-
-	@Override
 	public boolean isInlineTag() {
 		return false;
-	}
-
-	@Override
-	public String toString(Tag tag) {
-		return "<DT><B>Auto Syncs</B></DT><DD>" + tag.text() + "</DD>\n";
-	}
-
-	@Override
-	public String toString(Tag[] tags) {
-		String result = "";
-		for(Tag tag : tags)
-			result += toString(tag);
-		
-		return result;
 	}
 	
 	public static void register(Map<String, Taglet> tagletMap) {
@@ -90,4 +54,14 @@ public class SyncTaglet implements Taglet { //TODO tag functions with @sync (con
 			tagletMap.remove(tag.getName());
 		tagletMap.put(tag.getName(), tag);
     }
+ 
+	@Override
+	public String toString(List<? extends DocTree> arg0, Element arg1) {
+		return "<DT><B>Auto Syncs</B></DT><DD>" + arg0.toString() + "</DD>\n";
+	}
+	@Override
+	public Set<Location> getAllowedLocations() 
+	{
+		return EnumSet.allOf(jdk.javadoc.doclet.Taglet.Location.class);
+	}
 }

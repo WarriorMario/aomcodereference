@@ -1,4 +1,4 @@
-package aom.scripting.xs.ai;
+package aom.scripting.xs.ai.plan;
 
 import aom.scripting.datatypes.bool;
 import aom.scripting.datatypes.string;

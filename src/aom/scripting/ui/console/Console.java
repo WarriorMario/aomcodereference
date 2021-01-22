@@ -1106,7 +1106,7 @@ public abstract class Console {
 	 * If a valid index is given, changes the perspective/FOW of the observer player to the indexed player.
 	 * 
 	 * @since AoM:EE
-	 * @param player
+	 * @param ofPlayer
 	 */
 	public native void uiChangeObserverPerspective(int ofPlayer);
 
