@@ -19,13 +19,13 @@ import aom.scripting.datatypes.vector;
 public class Query {	
 		/** 
 	   	* <pre>
-	    * Creates a unit query, returns the query ID. 
+	    * Creates a query, returns the query ID. 
 	    * Assign this to an int variable so you are able to keep track of the query.
 	    * If you lose the ID and thus don't destroy the query you have a memory leak. This will resolve itself after each game though since then everything is of course destroyed.
 	    * If you are using functions to create queries and don't want to keep making new ones you can use a static int to just have one persistent query of which you alter the data each function call.</pre> 
 	    */
 		public native int kbUnitQueryCreate(string name);
-		/** Destroys the given unit query. */
+		/** Destroys the given query. */
 		public native bool kbUnitQueryDestroy(long queryID);
 		/** 
 	   	* <pre>
@@ -60,9 +60,9 @@ public class Query {
 		public native int kbUnitQueryGetResult(long queryID, int index);	
 		/** Returns the number of pop slots currently occupied by the results in the given query. */
 		public native int kbGetPopulationSlotsByQueryID(int queryID);
-		/** Resets the given unit query results, leaves all the data in place. */
+		/** Resets the given query results, leaves all the data in place. */
 		public native bool kbUnitQueryResetResults(long queryID);
-		/** Resets the given unit query data AND results. */
+		/** Resets the given query data AND results. */
 		public native bool kbUnitQueryResetData(long queryID);
 		/** <pre>
 	    * The query will search for units belonging to this player.
@@ -70,14 +70,14 @@ public class Query {
 	    * But if I want to find all player 2's units regardless of kbUnitQuerySetSeeableOnly I need to use xsSetContextPlayer(playerID) to player 2. This basically means that I now execute the query as if I was player 2.
 		* With this trick you can swap perspectives and basically find all units everywhere belonging to anyone. 
 	    * The bool resetQueryData defaults to true, use this wisely in combination with the 2 other reset query functions.
-		* To reset this data pass in cInvalidPlayerID for playerID.</pre> 
+		* To reset this data pass in Ippert for playerID.</pre> 
 	    */
 		public native bool kbUnitQuerySetPlayerID(long queryID, int playerID, bool resetQueryData);
 		/** 
 	   	* <pre>
 	    * This for example searches for all enemy or all allied units.
 	    * Do not use this in combination with kbUnitQuerySetPlayerID because those don't go together. Just leave the kbUnitQuerySetPlayerID on default and then this function determines what you find.
-		* To reset this data pass in cInvalidPlayerRelation for playerRelation.</pre>
+		* To reset this data pass in -1001 for playerRelation.</pre>
 		* @see aom.scripting.xs.ai.ArtificialIntelligence#cPlayerRelationAny All player relation constants
 	    */
 		public native bool kbUnitQuerySetPlayerRelation(long queryID, int playerRelation);
@@ -90,8 +90,9 @@ public class Query {
 		public native bool kbUnitQuerySetUnitType(long queryID, int unitTypeID);
 		/** 
 	   	* <pre>
-	        * Sets the state of the action type the unit you are looking for must be performing. 
-		* With this you can for example search for Chimeras but only if they are currently doing their special attack.</pre>
+	    * Sets the data of the action type the unit you are looking for must be performing. 
+		* With this you can for example search for Chimeras but only if they are currently doing their special attack.
+		* To reset this data pass in -1 for actionTypeID.</pre>
 		* @see aom.scripting.xs.kb.Action All action constants
 	     */
 		public native bool kbUnitQuerySetActionType(long queryID, int actionTypeID);
@@ -121,7 +122,7 @@ public class Query {
 		/** 
 	   	* <pre>
 	        * Sets the position from which the query starts searching. 
-		* To reset this data pass in -1,-1,-1 for v. Note that this will also deactivate a potental kbUnitQuerySetMaximumDistance (this doesn't mean it will forget about the possibily previously set range value, it will just not use it now).</pre>
+		* To reset this data pass in vector(-1,-1,-1) for v. Note that this will also deactivate a potental kbUnitQuerySetMaximumDistance (this doesn't mean it will forget about the possibly previously set range value, it will just not use it now).</pre>
 	        */
 		public native bool kbUnitQuerySetPosition(long queryID, vector v);
 		/** 
@@ -160,7 +161,7 @@ public class Query {
 		/** 
 	   	* <pre>
 	        * Finds units in the given army, the armies in question here are armies made via triggers. 
-		* To reset this data pass in cInvalidArmyID for armyID.</pre> 
+		* To reset this data pass in -1002 for armyID.</pre> 
 	        */	
 		public native bool kbUnitQuerySetArmyID(long queryID, int armyID);
 			
