@@ -1,0 +1,15 @@
+/AccountService$AuthenticateResponse.class
+/AccountService.class
+/GameListService$Game.class
+/GameListService$KeyValuePair.class
+/GameListService$SimpleGameList.class
+/GameListService.class
+/MatchMakingService$ContinuousValueParameter.class
+/MatchMakingService$FindMatchResponse.class
+/MatchMakingService$MatchRecord.class
+/MatchMakingService.class
+/ZoneAccessService$GetMasterAndServiceTicketsRequest.class
+/ZoneAccessService$GetMasterAndServiceTicketsResponse.class
+/ZoneAccessService$StatusCodeResult.class
+/ZoneAccessService$XMLBlobResult.class
+/ZoneAccessService.class

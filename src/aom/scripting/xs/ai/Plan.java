@@ -13,7 +13,7 @@ import aom.scripting.datatypes.vector;
  * @author Mythic_Freak - mythic.freak[a]gmail.com
  */
 public class Plan {
-	private Plan () {}
+	protected Plan () {}
 	
 	//Plan Types:
 	public final int cPlanMove=0;
